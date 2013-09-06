@@ -1,0 +1,9 @@
+<%= link_to "Add more", new_article_path %>
+<h1>List Article</h1>
+<% for article in @articles do %>
+	<p>
+		<%= link_to h(article.name), article_path(article) %>
+		<small> Posted: <%= article.author_name %></small>
+	</p>
+
+<% end %>

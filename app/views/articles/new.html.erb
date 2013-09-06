@@ -1,0 +1,11 @@
+<h1>Add Article</h1>
+
+<div class="container">
+	<%= form_for @article do |f| %>
+		<%= f.label :name %> <%= f.text_field :name %>
+		<%= f.label :content %><%=f.text_area :content, :size=> "15x20" %>
+		<%= f.label :author_name %>
+		<%= f.text_field :author_name %>
+		<%= f.submit "Save article" %>
+	<% end %>
+</div>
