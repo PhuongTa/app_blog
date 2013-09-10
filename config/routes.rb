@@ -5,8 +5,18 @@ AppBlog::Application.routes.draw do
   resources :users
   
   resources :articles 
+  # do
+  #   member do 
+  #     put :change_published
+  #   end
+  # end
+  #match "articles/:id/published", :to => "articles#published", :as => "published_article"
+  match "articles/:id/change_published", :to => "articles#change_published", :as => "change_published_article"
+  #match "users/:id/activate" => "users#activate", :as => "active_user"
   resources :roles
+  resources :static_pages
   root :to => 'static_pages#index'
+  #match "/signout", to: "sessions#destroy", via:'delete'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,4 +1,8 @@
 <h1><%= @article.name%></h1>
+<small><b>Posted:</b> <%= @article.author_name %> | <b>Create at:</b> <%= @article.created_at.strftime("%b %d,%Y") %></small>
 <p><%= @article.content %></p>
-<%= link_to "List artile", articles_path%> |
-<%= link_to "Add more", new_article_path %>
+<%= link_to "Back", :back %>
+<% if can? :manage, Article %>
+	<%= link_to "List article", articles_path%> |
+	<%= link_to "Add more", new_article_path %>
+<% end %>
