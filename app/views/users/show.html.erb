@@ -1,4 +1,4 @@
-<!-- <h3><%#= @user.name %></h3> -->
+<h3><%= @user.full_name %></h3>
 <h3><%= @user.email %></h3>
 
 <%= link_to_if(can?(:update,@user), "Edit", edit_user_path(@user)) %> |
@@ -13,7 +13,8 @@
 		<%# if !@user.roles.empty? %> <!-- return an empty array -->
 		<tr>
 			<td class="oce-first">Role:</td>
-			<td><%= @user.roles.first.try(:name) || "none" %></td>
+			<%#= @user.roles.min.try(:name) || "none" %>
+			<td><%= @user.roles.empty? ? "none" : @user.high_level.name  %></td>
 		</tr>
 		<%# end %>
 	<% if can?(:see_timestamps,User) %>

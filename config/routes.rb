@@ -1,4 +1,6 @@
 AppBlog::Application.routes.draw do
+  get "roles/new"
+
   devise_for :users#, :controllers => {:registrations => 'users/registrations'}
   resources :users
   

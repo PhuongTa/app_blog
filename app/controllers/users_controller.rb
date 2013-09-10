@@ -1,20 +1,15 @@
 class UsersController < ApplicationController
 	before_filter :get_user, :only =>[:index,:new,:edit]
 	before_filter :accessible_roles, :only => [:new,:edit,:show,:update,:create]
-	load_and_authorize_resource :only=>[:show,:new,:destroy,:edit,:update]
+	load_and_authorize_resource :only=>[:show,:new,:destroy,:edit,:update,:index]
 	
 	def index
 		@users= User.accessible_by(current_ability,:index).limit(20)
-		respond_to do |format|
-	      format.json { render :json => @users }
-	      format.xml  { render :xml => @users }
-	      format.html
-    	end
 	end
 
 	def new
-		
 	end
+
 	def create
 		@user= User.new(params[:user])
 		if @user.save
@@ -26,14 +21,6 @@ class UsersController < ApplicationController
 		end
 	end
 	def show
-	    respond_to do |format|
-	      format.json { render :json => @user }
-	      format.xml  { render :xml => @user }
-	      format.html      
-	    end
- 
-	  rescue ActiveRecord::RecordNotFound
-	    respond_to_not_found(:json, :xml, :html)
 	end
 
 	def edit
@@ -59,6 +46,7 @@ class UsersController < ApplicationController
 		flash[:notice]="Delete account successfully."
 		redirect_to users_url
 	end
+
 
 	private
 	#Get roles accessible by the current_user

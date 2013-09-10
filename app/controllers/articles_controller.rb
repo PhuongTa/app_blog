@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
  
-  #before_filter :authenticate_user!, :except =>[:index,:show]
-  #load_and_authorize_resource
+  before_filter :authenticate_user!, :except =>[:index,:show]
+  load_and_authorize_resource
   def new
   	@article= Article.new
   end

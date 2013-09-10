@@ -1,16 +1,17 @@
-<!-- <div><%#= f.label :first_name %><br/>
-<%#= f.text_field :first_name ,:autofocus => true %></div>
+<div><%= f.label :first_name %><br/>
+<%= f.text_field :first_name ,:autofocus => true %></div>
 
-<div><%#= f.label :last_name %> <br/>
-<%#= f.text_field :last_name %></div>
- -->
+<div><%= f.label :last_name %> <br/>
+<%= f.text_field :last_name %></div>
+
 <div><%= f.label :email %><br />
   <%= f.email_field :email%></div>
-<% if can? :manage, Role %>
+
+<% if can? :manage, @accessible_roles %>
 *** Role:
-	<% for role in Role.all %>
+	<% for role in @accessible_roles %>
 	<div>
-	  	<%= check_box_tag "user[role_ids][]", role.id,@user.roles.include?(role) %>
+	  	<%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role)%>
 	  	<%=h role.name.to_s.camelize %>
   	</div>
 	<% end %>
