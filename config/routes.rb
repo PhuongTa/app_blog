@@ -3,7 +3,7 @@ AppBlog::Application.routes.draw do
 
   devise_for :users#, :controllers => {:registrations => 'users/registrations'}
   resources :users
-  
+  resources :comments
   resources :articles 
   # do
   #   member do 

@@ -1,0 +1,18 @@
+<%= form_for @comment ,:html=>{:class =>"well"} do |f| %>
+<fieldset>
+	<legend>Post a new comment</legend>
+	<%= f.hidden_field :article_id %>
+	<%= f.text_area :content, :placeholder => "Please type your comment here...", :size => "30x10" %>
+	<p>Comment as a Guest, or login: 
+		<%= image_tag("login.png") %>
+	</p>	
+	<span> <%= f.label :author_name, 'Name' %></span>
+	<%= f.text_field :author_name %> <br>
+	<small>*Displayed next to your comments.</small> <br>
+	<span><%= f.label :site_url, 'Webiste' %> (optional)</span>
+	<%= f.text_field :site_url %><br>
+	<small>*If you have a website, link to it here.</small>
+	<br/>
+	<%= f.submit "Submit Comment" %>
+</fieldset>
+<% end %>

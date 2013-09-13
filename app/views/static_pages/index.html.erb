@@ -1,30 +1,4 @@
 <h1>Welcome to my blog.</h1>
 <p>List of articles</p>
-<table>
-	<tr>
-		<th>#</th>
-		<th>Article title</th>
-		<th>Created at</th>
-		<th>Published </th>
-	
-	</tr>
-	<% for article in @articles do %>	
-	<tr>
-		<td></td>
-		<td><%= link_to h(article.name), article_path(article) %></td>
-		<td><%= article.created_at.strftime("%b %d, %Y") %></td>
-		<% if  article.published? %>
-			<td><i class="icon-check-sign"></i></td>
-		<% else %>
-			<td><i class="icon-check-empty"></i></td>
-		<% end %>
-	</tr>
-</table>
 
-	<p>
-		
-		<small> Posted: <%= article.author_name %></small>
-	</p>
-
-<% end %>
-
+<%= render 'articles/show_list_articles'%>

@@ -1,31 +1,3 @@
 <%= link_to "Add more", new_article_path %>
 <h1>List Article</h1>
-<table>
-	<tr>
-		<th>#</th>
-		<th>Article title</th>
-		<th>Created at</th>
-		<th>Published </th>
-		<th>CRUD</th>
-	</tr>
-	<% for article in @articles do %>	
-	<tr>
-		<td></td>
-		<td><%= link_to h(article.name), article_path(article) %></td>
-		<td><%= article.created_at.strftime("%b %d, %Y") %></td>
-		<% if article.published? %>
-			<td><%= link_to "published",change_published_article_path(article)%></td>
-		<% else %>
-			<td><%= link_to "unpublished",change_published_article_path(article)%> </td>
-		<% end %>
-		<td><%= link_to_if(can?(:edit,@user),raw('<i class="icon-edit"></i>'),edit_article_path(article.id),) {}%> | 
-		<%= link_to_if(can?(:delete,@user),raw('<i class="icon-remove"></i>'),article,:confirm=> "Are you sure?",:method=>:delete) {} %></td>
-	</tr>
-</table>
-
-	<p>
-		
-		<small> Posted: <%= article.author_name %></small>
-	</p>
-
-<% end %>
+<%= render 'show_list_articles' %>

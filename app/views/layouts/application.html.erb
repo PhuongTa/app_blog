@@ -7,6 +7,8 @@
   <%= csrf_meta_tags %>
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 </head>
+
+
 <body>
 	<% flash.each do |key, msg| %>
 		<%= content_tag :div, msg, class: "alert alert-#{key}"%>

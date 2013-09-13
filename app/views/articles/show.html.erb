@@ -6,3 +6,21 @@
 	<%= link_to "List article", articles_path%> |
 	<%= link_to "Add more", new_article_path %>
 <% end %>
+
+<div class="comment-show">
+	<% for comment in  @article.comments do %>
+	<div class="comment-header">
+		<%= image_tag("avatar-normal.png")%>
+		<small><%=h comment.author_name.to_s.camelcase %> - 282 weeks ago</small> 
+	</div>
+	<div>  
+		<b><%= comment.content %></b><br>
+	</div>
+	<%= button_tag "Reply" %>
+	<% end %>
+</div>
+
+<div class="comment-form">
+	Add your comment: 
+	<%= render :partial => 'comments/form'%>
+</div>
