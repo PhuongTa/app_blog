@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
 			flash[:notice]="Create comment successfully."
 			redirect_to article_url(@comment.article_id)
 		else
-			render :action =>'new'
+			#flash[:notice]="cannot create comment"
+			render :action => 'new'
 		end
 	end
 

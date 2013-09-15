@@ -3,8 +3,13 @@ AppBlog::Application.routes.draw do
 
   devise_for :users#, :controllers => {:registrations => 'users/registrations'}
   resources :users
-  resources :comments
-  resources :articles 
+  
+  resources :articles  do
+    member do
+      resources :comments
+  end
+end
+
   # do
   #   member do 
   #     put :change_published

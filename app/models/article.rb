@@ -3,6 +3,12 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_many :comments,:dependent => :destroy
   
+  validates :name, :presence => true
+  validates :content, :presence => true
+  validates :author_name,:presence => true
+
+
+
   #scope :visiblie, where("hidden != ?", true)
   scope :published, where("published != ?", false )
   scope :published_at, lambda{where("published_at <= ? ",Time.zone.now) }

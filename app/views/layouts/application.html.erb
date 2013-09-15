@@ -9,6 +9,16 @@
 </head>
 
 
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+    });
+
+  })
+</script>
+
 <body>
 	<% flash.each do |key, msg| %>
 		<%= content_tag :div, msg, class: "alert alert-#{key}"%>

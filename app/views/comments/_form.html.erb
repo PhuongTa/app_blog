@@ -1,8 +1,10 @@
 <%= form_for @comment ,:html=>{:class =>"well"} do |f| %>
 <fieldset>
 	<legend>Post a new comment</legend>
+	<%= render 'shared/error_messages', object: f.object %>
 	<%= f.hidden_field :article_id %>
-	<%= f.text_area :content, :placeholder => "Please type your comment here...", :size => "30x10" %>
+	<%= f.text_area :content,class: "wysihml5", :placeholder => "Please type your comment here...", :size => "30x10" %>
+
 	<p>Comment as a Guest, or login: 
 		<%= image_tag("login.png") %>
 	</p>	

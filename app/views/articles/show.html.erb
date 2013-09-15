@@ -1,17 +1,25 @@
 <h1><%= @article.name%></h1>
 <small><b>Posted:</b> <%= @article.author_name %> | <b>Create at:</b> <%= @article.created_at.strftime("%b %d,%Y") %></small>
-<p><%= @article.content %></p>
+<p><%=h @article.content %></p>
 <%= link_to "Back", :back %>
 <% if can? :manage, Article %>
 	<%= link_to "List article", articles_path%> |
-	<%= link_to "Add more", new_article_path %>
+	<%= link_to "Add more", new_article_path %> |
+	<%= link_to "Edit article", edit_article_path %> 
 <% end %>
 
 <div class="comment-show">
+	<h3>Comment (<%= @article.comments_count %>)</h3>
+	<span>Sort by: Date | Rating | Last Activity </span>
 	<% for comment in  @article.comments do %>
 	<div class="comment-header">
 		<%= image_tag("avatar-normal.png")%>
-		<small><%=h comment.author_name.to_s.camelcase %> - 282 weeks ago</small> 
+		<small><%=h comment.author_name.to_s.camelcase %> - 
+			<%#= comment.created_at.strftime("%b %d, %Y")%>
+			<i><%= time_ago_in_words(comment.created_at) %> ago.</i>
+			<%#= comment.created_at.strftime("Posted: %B %e%t, %Y at %I : %M %p")  %>
+		</small> 
+		- 0 - Like | Dislike
 	</div>
 	<div>  
 		<b><%= comment.content %></b><br>
@@ -20,7 +28,7 @@
 	<% end %>
 </div>
 
-<div class="comment-form">
+<div class="comment_form" id="comment">
 	Add your comment: 
 	<%= render :partial => 'comments/form'%>
 </div>

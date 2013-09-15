@@ -1,4 +1,19 @@
-<h1>Welcome to my blog.</h1>
-<p>List of articles</p>
+<div id="left-side">
+	<% @articles.each do |article| %>
+	<div class="single-post">
+	<h2><%= article.name %></h2>
+	<p class="content">
+		<%= truncate(article.content, :length=> 500 , :separator =>' ')%><br/>
+		<%= link_to "Read the rest of this entry »", article %>
+	</p>
+	<p><small><%= article.created_at.strftime("Posted: %B %e%t, %Y at %I : %M %p") %> in *Categories* | 
+		<%#= link_to "comment (#{article.comments_count})" ,article_path(article,:anchor=>"comment") %>
+		<%= link_to_comment(article) %>
+	</small></p>
 
-<%= render 'articles/show_list_articles'%>
+	</div>
+	<% end %>
+</div>
+<div id="right-side">
+
+</div>

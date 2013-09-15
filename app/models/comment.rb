@@ -4,4 +4,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :article , :counter_cache => true
+
+  validates :author_name, :presence => true
+  validates :content, :presence => true
 end

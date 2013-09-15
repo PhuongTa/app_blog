@@ -17,7 +17,9 @@
 		<% else %>
 			<td><%= link_to "unpublished",change_published_article_path(article)%> </td>
 		<% end %>
+
 		<td><%= pluralize article.comments.size, "comment" %></td>
+		
 		<td><%= link_to_if(can?(:edit,@user),raw('<i class="icon-edit"></i>'),edit_article_path(article.id),) {}%> | 
 		<%= link_to_if(can?(:delete,@user),raw('<i class="icon-remove"></i>'),article,:confirm=> "Are you sure?",:method=>:delete) {} %></td>
 	</tr>
